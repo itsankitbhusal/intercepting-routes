@@ -1,4 +1,5 @@
 import { IProduct } from "@/types";
+import Image from "next/image";
 import React from "react";
 
 interface IProps {
@@ -6,40 +7,16 @@ interface IProps {
 }
 
 const ProductDetail = ({ product }: IProps) => {
-  const renderStars = (rating: number) => {
-    const fullStars = Math.floor(rating);
-    const halfStar = rating % 1 !== 0;
-    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-
-    return (
-      <div className="flex items-center">
-        {Array(fullStars)
-          .fill(0)
-          .map((_, idx) => (
-            <span key={`full-${idx}`} className="text-yellow-500 text-lg">
-              ★
-            </span>
-          ))}
-        {halfStar && <span className="text-yellow-500 text-lg">☆</span>}
-        {Array(emptyStars)
-          .fill(0)
-          .map((_, idx) => (
-            <span key={`empty-${idx}`} className="text-gray-300 text-lg">
-              ★
-            </span>
-          ))}
-      </div>
-    );
-  };
-
   return (
     <div className="container mx-auto px-4 py-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Product Image */}
         <div className="flex justify-center">
-          <img
+          <Image
             src={product.image}
             alt={product.title}
+            height={500}
+            width={500}
             className="max-w-full h-auto rounded shadow-md"
           />
         </div>
@@ -56,7 +33,7 @@ const ProductDetail = ({ product }: IProps) => {
 
           {/* Rating */}
           <div className="flex items-center mb-4">
-            {renderStars(product.rating.rate)}
+            ⭐ {product.rating.rate}
             <span className="ml-2 text-gray-600">
               ({product.rating.count} reviews)
             </span>

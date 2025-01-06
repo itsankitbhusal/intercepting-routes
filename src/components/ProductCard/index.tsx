@@ -1,4 +1,5 @@
 import { IProduct } from "@/hooks/useFetchProducts";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -10,14 +11,16 @@ const ProductCard = ({ product }: IProps) => {
   return (
     <div className="border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 w-full max-w-sm">
       <div className="relative h-48">
-        <img
+        <Image
           src={product.image}
           alt={product.title}
+          width={500}
+          height={500}
           className="w-full h-full object-cover rounded-t-lg"
         />
       </div>
       <div className="p-4 flex flex-col h-52">
-        <Link href={`/product/${product.id}`}>
+        <Link href={`/product/${product.id}`} prefetch>
           <h2 className="text-lg font-semibold text-gray-800 truncate">
             {product.title}
           </h2>
