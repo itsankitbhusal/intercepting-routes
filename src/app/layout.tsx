@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Parallel Routes",
-  description: "Parallel Routes in next js",
+  title: "Intercepting Routes",
+  description: "Intercepting Routes in next js",
 };
 
 export default function RootLayout({
