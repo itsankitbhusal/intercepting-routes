@@ -27,6 +27,7 @@ const page = async ({ params }: IProps) => {
 
   return (
     <div className=" grid place-items-center h-screen">
+      This is page
       <ProductDetail key={product.id} product={product} />
     </div>
   );
